@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
+# This script displays the content of the current directory in a list format
+# where only the part of the name after the first dash is displayed
 
-# Loop through each file in the current directory
 for file in *; do
-    
-    if [[ ! "$file" == .* ]]; then
-        
-        filename=$(echo "$file" | cut -d '-' -f2-)
-       
-        echo "$filename"
+    if [[ ! -f "$file" || "$file" == .* ]]; then
+        continue
     fi
+    echo "$file" | cut -d'-' -f2-
 done
