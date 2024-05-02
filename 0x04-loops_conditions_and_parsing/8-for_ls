@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
-# Displays the contents of the current directory in list format.
-# Only displays the part of the name after the first dash.
-
-file_list=$(ls)
-for i in $file_list; do
-  echo "$i" | cut -d '-' -f2
+# Loop through each file in the current directory
+for file in *; do
+    
+    if [[ ! "$file" == .* ]]; then
+        
+        filename=$(echo "$file" | cut -d '-' -f2-)
+       
+        echo "$filename"
+    fi
 done
