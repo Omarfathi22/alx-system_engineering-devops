@@ -1,0 +1,8 @@
+#!/bin/bash
+
+./7-highlander &
+PID=$!
+
+trap 'kill -15 $PID' SIGINT
+
+wait $PID
