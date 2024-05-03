@@ -1,8 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# This script starts the 7-highlander process and stops it after each iteration
 
 ./7-highlander &
-PID=$!
 
-trap 'kill -15 $PID' SIGINT
+while true; do
+    kill -0 $! || break
+    sleep 1
+done
 
-wait $PID
+kill -TERM $!
