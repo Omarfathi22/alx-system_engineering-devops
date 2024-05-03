@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-/* Function to create zombie processes 
+/* Function to create zombies processes 
  * Create 5 child processes 
  * Parent process 
  * Child process 
  * Error 
  **/
-int create_zombies(void)
+int create_child_zombies(void)
 {
     pid_t child_pid;
 
@@ -32,7 +32,7 @@ int create_zombies(void)
     return 0;
 }
 
-int infinite_while(void)
+int infinite_while_loop(void)
 {
     while (1) {
         sleep(1);
@@ -43,8 +43,8 @@ int infinite_while(void)
 int main(void)
 {
     
-    create_zombies();
-    infinite_while();
+    create_child_zombies();
+    infinite_while_loop();
 
     return 0;
 }
