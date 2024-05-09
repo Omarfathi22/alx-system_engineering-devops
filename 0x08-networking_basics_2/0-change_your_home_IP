@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
-# changes the following domain resolve ips
+
+# Changes the following domain resolve IPs:
 #   localhost from 127.0.0.1 to 127.0.0.2
 #   facebook.com from 157.240.11.35 to 8.8.8.8
 
-cp /etc/hosts ~/hosts.new
-echo "127.0.0.2		localhost" > ~/hosts.new
-echo "8.8.8.8		facebook.com" >> ~/hosts.new
-cp -f ~/hosts.new /etc/hosts
+# Create a backup of the hosts file
+cp /etc/hosts ~/hosts_backup
+
+# Modify the hosts file to change IP addresses
+echo "127.0.0.2         localhost" | sudo tee -a /etc/hosts
+echo "8.8.8.8           facebook.com" | sudo tee -a /etc/hosts
