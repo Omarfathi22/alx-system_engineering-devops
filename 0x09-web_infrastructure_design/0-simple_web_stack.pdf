@@ -1,0 +1,29 @@
+ALX Project
+Web Infrastructure Design
+
+Task 0.
+Definitions and Explanations.
+
+What is a server: A server is a hardware device, a virtual machine, or a software application that provides functionalities for other programs or devices, known as “clients.”
+
+What is the role of a domain name: A domain name is used to identify Internet resources, such as computers, networks, and services, with a text-based label that is easier to remember than numerical addresses (IP addresses).
+
+What type of DNS record is www in https://app.smartdraw.com/: It is a ‘CNAME’ record.
+
+What is the role of the Web Server: The role of a Web Server is to store, process, and display website content (codebase); it delivers web pages to users (primarily HTML and CSS) over the HTTP protocol.
+
+What is the role of the application server: The application server's role is to generate dynamic content by executing server-side code such as JSP, Ajax, PHP, etc.
+
+What is the role of the database: The database's role is to manage data systematically and efficiently, allowing data to be easily added, accessed, updated, managed, and deleted.
+
+What does the server use to communicate with the user's computer requesting the website: The server communicates via the HTTP protocol.
+
+Issues
+
+A. SPOF (Single Point Of Failure): There are numerous single points of failure, starting from having a single server that houses the web server, application server, and database. A single point of failure is a component of a system that, if it fails, will halt the entire system's operation.
+
+B. Downtime when maintenance is required (like deploying new code, the web server needs to be restarted): The downtime could be longer than anticipated because the server relies on a single code base, which is unavailable during maintenance. Consequently, users will be unable to access the website and its content, leading to a poor user experience and a loss of traffic.
+
+C. Inability to scale with high incoming traffic: The domain name points directly at the server, which lacks a load balancer to handle increased traffic more efficiently. This limitation can negatively impact the user experience and restrict the number of users the website can accommodate.
+
+
