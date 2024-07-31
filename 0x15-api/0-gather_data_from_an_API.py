@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-"""This script uses a REST API to return information about
-an employee's TODO list progress.
-"""
 
+"""This script uses a REST API to return
+information about an employee's
+TODO list progress.
+"""
 import requests
 import sys
 
@@ -32,6 +33,3 @@ if __name__ == "__main__":
     # Print employee TODO list progress
     print(f"Employee {employee_name} is done with tasks "
           f"({number_of_done_tasks}/{total_tasks}):")
-    for task in done_tasks:
-        print(f"\t {task.get('title')}")
-
