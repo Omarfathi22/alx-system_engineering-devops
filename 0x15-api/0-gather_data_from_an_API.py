@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""
-This script uses a REST API to return information about
+"""This script uses a REST API to return information about
 an employee's TODO list progress.
 """
 
@@ -35,3 +34,4 @@ if __name__ == "__main__":
           f"({number_of_done_tasks}/{total_tasks}):")
     for task in done_tasks:
         print(f"\t {task.get('title')}")
+
