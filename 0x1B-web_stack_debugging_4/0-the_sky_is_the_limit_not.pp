@@ -1,18 +1,7 @@
-# This Puppet manifest optimizes Nginx to handle more requests under load
-
-exec { 'optimize_nginx':
-  command => '/usr/sbin/nginx -s reload',
-  path    => ['/bin', '/usr/bin', '/sbin', '/usr/sbin'],
-  require => File['/etc/nginx/nginx.conf'],
-}
-
-file { '/etc/nginx/nginx.conf':
-  ensure  => file,
-  content => template('nginx/nginx.conf.erb'),
-  notify  => Exec['optimize_nginx'],
-}
-
-package { 'nginx':
-  ensure => installed,
+# Fixes an nginx site that can't handle multiple concurrent requests
+exec { 'fix--for-nginx':
+  command => "bash -c \"sed -iE 's/^ULIMIT=.*/ULIMIT=\\\"-n 8192\\\"/' /etc/default/nginx; service nginx restart\"",
+  path    => '/usr/bin:/usr/sbin:/bin',
+  unless  => "grep -q '^ULIMIT=\"-n 8192\"' /etc/default/nginx",
 }
 
