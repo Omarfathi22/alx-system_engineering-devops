@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Nginx configuration for serving /airbnb-onepage/ and proxying requests to port 5000
+
+server {
+    listen 80;
+    server_name _;  # Respond to all requests on port 80
+
+    location /airbnb-onepage/ {
+        proxy_pass http://127.0.0.1:5000;  # Proxy requests to the application server on port 5000
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location / {
+        root /var/www/html;  # Serve static files from this directory
+        index index.html index.htm;
+    }
+}
+
